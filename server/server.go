@@ -4,7 +4,6 @@ import (
 	"net"
 	"net/http"
 
-	"github.com/flosch/pongo2"
 	"github.com/gorilla/mux"
 	"github.com/sirupsen/logrus"
 )
@@ -12,8 +11,6 @@ import (
 // Server provides the web interface for the application.
 type Server struct {
 	listener    net.Listener
-	router      *mux.Router
-	templateSet *pongo2.TemplateSet
 	log         *logrus.Entry
 	stoppedChan chan bool
 }
@@ -28,8 +25,6 @@ func New(cfg *Config) (*Server, error) {
 		r = mux.NewRouter()
 		s = &Server{
 			listener:    l,
-			router:      mux.NewRouter(),
-			templateSet: pongo2.NewSet("", &b0xLoader{}),
 			log:         logrus.WithField("context", "server"),
 			stoppedChan: make(chan bool),
 		}
@@ -37,8 +32,7 @@ func New(cfg *Config) (*Server, error) {
 			Handler: r,
 		}
 	)
-	r.PathPrefix("/static").Handler(http.FileServer(HTTP))
-	r.PathPrefix("/").Handler(s)
+	r.PathPrefix("/").Handler(http.FileServer(HTTP))
 	go func() {
 		defer close(s.stoppedChan)
 		defer s.log.Info("server has stopped")
@@ -48,17 +42,6 @@ func New(cfg *Config) (*Server, error) {
 		}
 	}()
 	return s, nil
-}
-
-// ServeHTTP does preparatory work for the handlers.
-func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
-	if r.Method == http.MethodPost {
-		if err := r.ParseForm(); err != nil {
-			http.Error(w, err.Error(), http.StatusBadRequest)
-			return
-		}
-	}
-	s.router.ServeHTTP(w, r)
 }
 
 // Close shuts down the web server.

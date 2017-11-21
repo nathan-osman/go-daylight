@@ -8,8 +8,8 @@ GID = $(shell id -g)
 # Find all Go source files (excluding the cache path)
 SOURCES = $(shell find -type f -name '*.go' ! -path './cache/*')
 
-# Find all resources (static files and templates)
-RESOURCES = $(shell find server/static server/templates)
+# Find all resources (static files)
+RESOURCES = $(shell find server/www)
 
 all: dist/${CMD}
 
