@@ -5,8 +5,78 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Sunrise and Sunset Calculator</title>
+
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="/css/daylight.css">
   </head>
   <body>
-    <!-- ... -->
+    <div class="container">
+
+      <!-- Header -->
+      <div class="header">
+        <h1>Sunrise and Sunset Calculator</h1>
+        <p>
+          Use this tool to quickly calculate the time of sunrise and sunset for a specific location.
+        </p>
+      </div>
+
+      <!-- GeoIP form -->
+      <div class="row">
+        <div class="col">
+          <label>
+            Latitude:
+            <input type="number">
+          </label>
+        </div>
+        <div class="col">
+          <label>
+            Longitude:
+            <input type="number">
+          </label>
+        </div>
+      </div>
+      <label>
+        Date:
+        <input type="date">
+      </label>
+      <div class="buttons">
+        <button type="button">Calculate</button>
+      </div>
+
+      <!-- Spinner -->
+      <div class="spinner">
+        <img src="/img/spinner.svg">
+      </div>
+
+      <!-- Result -->
+      <div class="result">
+        <div class="header">
+          <h2>Result</h2>
+          <p>
+            The calculated values are shown below.
+          </p>
+        </div>
+        <div class="row">
+          <div class="col">
+            <img src="/img/sunrise.svg" class="icon">
+            Sunrise:<br>
+            <span class="time" id="sunrise">9:01am</span>
+          </div>
+          <div class="col">
+            <img src="/img/sunset.svg" class="icon">
+            Sunset:<br>
+            <span class="time" id="sunset">6:18pm</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Footer -->
+      <div class="footer">
+        Copyright 2017 - Nathan Osman
+      </div>
+
+    </div>
+
+    <!-- Scripts -->
   </body>
 </html>

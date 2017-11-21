@@ -1,0 +1,116 @@
+@font-face {
+  font-family: 'Open Sans Condensed';
+  src: url('../fonts/OpenSansCondensed-Light.eot');
+  src: url('../fonts/OpenSansCondensed-Light.eot?#iefix') format('embedded-opentype'),
+       url('../fonts/OpenSansCondensed-Light.woff') format('woff'),
+       url('../fonts/OpenSansCondensed-Light.ttf') format('truetype');
+  font-weight: 300;
+  font-style: normal;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #ddd;
+
+}
+
+body, button, input {
+  color: #666;
+  font-family: 'Open Sans Condensed';
+  font-size: 16pt;
+}
+
+button {
+  background-color: #ccc;
+  border: 1px solid #999;
+  padding: 4px 8px;
+}
+
+button:hover {
+  background-color: #ddd;
+  cursor: pointer;
+}
+
+h1, h2 {
+  color: #999;
+}
+
+h1 {
+  font-size: 32pt;
+}
+
+h2 {
+  font-size: 28pt;
+}
+
+input {
+  background-color: #eee;
+  border: 1px solid #ccc;
+  display: block;
+  padding: 4px 8px;
+  width: 100%;
+}
+
+input:focus {
+  border-color: #999;
+  outline: none;
+}
+
+.buttons {
+  margin: 32px 0;
+}
+
+.footer {
+  border-top: 2px solid #ccc;
+  font-size: 12pt;
+  margin-top: 64px;
+  padding: 16px 0;
+}
+
+.header {
+  margin-bottom: 48px;
+}
+
+.header h1, .header h2 {
+  margin-bottom: 0;
+}
+
+.header h1 + p, .header h2 + p {
+  margin-top: 0;
+}
+
+.icon {
+  float: left;
+  margin-right: 16px;
+  max-width: 96px;
+}
+
+.spinner {
+  text-align: center;
+}
+
+.time {
+  font-size: 32pt;
+}
+
+@media only screen and (min-width: 940px) {
+
+  .container {
+    margin: auto;
+    width: 900px !important;
+  }
+
+  .row {
+    display: flex;
+    margin: 0 -16px;
+  }
+
+  .row > .col {
+    flex-grow: 1;
+    margin-left: 16px;
+    margin-right: 16px;
+  }
+}
