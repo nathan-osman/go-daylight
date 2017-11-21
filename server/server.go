@@ -23,6 +23,7 @@ func New(cfg *Config) (*Server, error) {
 		return nil, err
 	}
 	var (
+		r = mux.NewRouter()
 		s = &Server{
 			listener:    l,
 			router:      mux.NewRouter(),
@@ -30,9 +31,11 @@ func New(cfg *Config) (*Server, error) {
 			stoppedChan: make(chan bool),
 		}
 		server = http.Server{
-			Handler: s.router,
+			Handler: r,
 		}
 	)
+	r.PathPrefix("/static").Handler(http.FileServer(HTTP))
+	r.PathPrefix("/").Handler(s)
 	go func() {
 		defer close(s.stoppedChan)
 		defer s.log.Info("server has stopped")
@@ -42,6 +45,17 @@ func New(cfg *Config) (*Server, error) {
 		}
 	}()
 	return s, nil
+}
+
+// ServeHTTP does preparatory work for the handlers.
+func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
+	if r.Method == http.MethodPost {
+		if err := r.ParseForm(); err != nil {
+			http.Error(w, err.Error(), http.StatusBadRequest)
+			return
+		}
+	}
+	s.router.ServeHTTP(w, r)
 }
 
 // Close shuts down the web server.
