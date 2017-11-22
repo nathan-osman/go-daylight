@@ -6,7 +6,13 @@ This simple web application provides an interface for calculating sunrise and su
 
 Here is what go-daylight looks like in action:
 
-[![](https://github.com/nathan-osman/go-daylight/blob/master/img/screenshot.png?raw=true)](https://github.com/nathan-osman/go-daylight/blob/master/img/screenshot.png?raw=true)
+[<img src="https://github.com/nathan-osman/go-daylight/blob/master/img/screenshot.png?raw=true" width="300">](https://github.com/nathan-osman/go-daylight/blob/master/img/screenshot.png?raw=true)
+
+### Demo
+
+You can see the application in action here:
+
+https://daylight.quickmediasolutions.com/
 
 ### Building
 
