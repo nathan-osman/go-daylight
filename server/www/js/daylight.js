@@ -22,7 +22,7 @@ $(function() {
         latitude: parseFloat($latitude.val()),
         longitude: parseFloat($longitude.val()),
         year: parseInt($year.val()),
-        month: parseInt($month.val()),
+        month: parseInt($month.val()) + 1,
         day: parseInt($day.val())
       }),
       contentType: 'application/json'
