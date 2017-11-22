@@ -7,6 +7,7 @@ $(function() {
   var $day = $('#day');
   var $calculate = $('#calculate');
   var $spinner = $('#spinner');
+  var $error = $('#error');
   var $result = $('#result');
   var $sunrise = $('#sunrise');
   var $sunset = $('#sunset');
@@ -14,6 +15,7 @@ $(function() {
   // Dispatch the API request
   $calculate.click(function() {
     $spinner.show();
+    $error.hide();
     $result.hide();
     $.ajax({
       type: 'POST',
@@ -28,15 +30,18 @@ $(function() {
       contentType: 'application/json'
     })
     .done(function(d) {
-      // TODO: error handling
-      var sunrise = moment(d.sunrise);
-      var sunset = moment(d.sunset);
-      $sunrise.text(sunrise.format('h:mma'));
-      $sunset.text(sunset.format('h:mma'));
-      $result.show();
+      if ('error' in d) {
+        $error.text("Error: " + d.error).show();
+      } else {
+        var sunrise = moment(d.sunrise);
+        var sunset = moment(d.sunset);
+        $sunrise.text(sunrise.format('h:mma'));
+        $sunset.text(sunset.format('h:mma'));
+        $result.show();
+      }
     })
-    .fail(function() {
-      //...
+    .fail(function(jqXHR) {
+      $error.text("Error: " + jqXHR.responseText).show();
     })
     .always(function() {
       $spinner.hide();

@@ -63,6 +63,14 @@ input:focus {
   margin: 32px 0;
 }
 
+.error {
+  background-color: #fdd;
+  border: 1px solid #f99;
+  color: #f66;
+  display: none;
+  padding: 16px;
+}
+
 .footer {
   border-top: 2px solid #ccc;
   font-size: 12pt;
