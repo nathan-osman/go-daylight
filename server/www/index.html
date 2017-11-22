@@ -25,31 +25,48 @@
         <div class="col">
           <label>
             Latitude:
-            <input type="number">
+            <input type="number" id="latitude">
           </label>
         </div>
         <div class="col">
           <label>
             Longitude:
-            <input type="number">
+            <input type="number" id="longitude">
           </label>
         </div>
       </div>
-      <label>
-        Date:
-        <input type="date">
-      </label>
+      <div class="row">
+        <div class="col">
+          <label>
+            Year:
+            <input type="number" id="year">
+          </label>
+        </div>
+        <div class="col">
+          <label>
+            Month:
+            <input type="number" id="month">
+          </label>
+        </div>
+        <div class="col">
+          <label>
+            Day:
+            <input type="number" id="day">
+          </label>
+        </div>
+      </div>
       <div class="buttons">
-        <button type="button">Calculate</button>
+        <button type="button" id="calculate">Calculate</button>
       </div>
 
       <!-- Spinner -->
-      <div class="spinner">
-        <img src="/img/spinner.svg">
+      <div class="spinner" id="spinner">
+        <img src="/img/spinner.svg"><br>
+        Calculating...
       </div>
 
       <!-- Result -->
-      <div class="result">
+      <div class="result" id="result">
         <div class="header">
           <h2>Result</h2>
           <p>
@@ -60,12 +77,12 @@
           <div class="col">
             <img src="/img/sunrise.svg" class="icon">
             Sunrise:<br>
-            <span class="time" id="sunrise">9:01am</span>
+            <span class="time" id="sunrise"></span>
           </div>
           <div class="col">
             <img src="/img/sunset.svg" class="icon">
             Sunset:<br>
-            <span class="time" id="sunset">6:18pm</span>
+            <span class="time" id="sunset"></span>
           </div>
         </div>
       </div>
@@ -78,5 +95,8 @@
     </div>
 
     <!-- Scripts -->
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/moment.min.js"></script>
+    <script src="/js/daylight.js"></script>
   </body>
 </html>
