@@ -92,6 +92,10 @@ input:focus {
   display: none;
 }
 
+.row > .col {
+  clear: both;
+}
+
 .spinner {
   display: none;
   text-align: center;
