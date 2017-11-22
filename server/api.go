@@ -9,6 +9,8 @@ import (
 	"github.com/nathan-osman/go-sunrise"
 )
 
+const iso8601 = "2006-01-02T15:04:05-0700"
+
 type apiInput struct {
 	Latitude  float64 `json:"latitude"`
 	Longitude float64 `json:"longitude"`
@@ -44,7 +46,7 @@ func (s *Server) api(w http.ResponseWriter, r *http.Request) {
 		a.Day,
 	)
 	d = map[string]string{
-		"sunrise": rise.String(),
-		"sunset":  set.String(),
+		"sunrise": rise.Format(iso8601),
+		"sunset":  set.Format(iso8601),
 	}
 }

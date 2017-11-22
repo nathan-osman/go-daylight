@@ -48,15 +48,18 @@ $(function() {
     });
   });
 
-  // Attempt to auto-load the information for the user's location
+  // Auto-fill the date fields
+  var m = moment();
+  $year.val(m.year());
+  $month.val(m.month() + 1);
+  $day.val(m.date());
+
+  // If location information is available, fill in the fields and simulate
+  // clicking the calculate button
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(function(pos) {
-      var m = moment();
       $latitude.val(pos.coords.latitude);
       $longitude.val(pos.coords.longitude);
-      $year.val(m.year());
-      $month.val(m.month() + 1);
-      $day.val(m.date());
       $calculate.click();
     });
   }
