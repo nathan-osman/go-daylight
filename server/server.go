@@ -32,6 +32,7 @@ func New(cfg *Config) (*Server, error) {
 			Handler: r,
 		}
 	)
+	r.HandleFunc("/api", s.api)
 	r.PathPrefix("/").Handler(http.FileServer(HTTP))
 	go func() {
 		defer close(s.stoppedChan)
