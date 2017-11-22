@@ -33,10 +33,12 @@ $(function() {
       if ('error' in d) {
         $error.text("Error: " + d.error).show();
       } else {
-        var sunrise = moment(d.sunrise);
-        var sunset = moment(d.sunset);
-        $sunrise.text(sunrise.format('h:mma'));
-        $sunset.text(sunset.format('h:mma'));
+        var sunrise = moment.tz(d.sunrise, moment.tz.guess());
+        var sunset = moment.tz(d.sunset, moment.tz.guess());
+        $('.time', $sunrise).text(sunrise.format('h:mma'));
+        $('.timezone', $sunrise).text(sunrise.format('z'));
+        $('.time', $sunset).text(sunset.format('h:mma'));
+        $('.timezone', $sunset).text(sunset.format('z'));
         $result.show();
       }
     })

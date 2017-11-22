@@ -82,12 +82,18 @@
           <div class="col">
             <img src="/img/sunrise.svg" class="icon">
             Sunrise:<br>
-            <span class="time" id="sunrise"></span>
+            <span id="sunrise">
+              <span class="time"></span>
+              <span class="timezone"></span>
+            </span>
           </div>
           <div class="col">
             <img src="/img/sunset.svg" class="icon">
             Sunset:<br>
-            <span class="time" id="sunset"></span>
+            <span id="sunset">
+              <span class="time"></span>
+              <span class="timezone"></span>
+            </span>
           </div>
         </div>
       </div>
@@ -102,6 +108,7 @@
     <!-- Scripts -->
     <script src="/js/jquery.min.js"></script>
     <script src="/js/moment.min.js"></script>
+    <script src="/js/moment-timezone-with-data.min.js"></script>
     <script src="/js/daylight.js"></script>
   </body>
 </html>
