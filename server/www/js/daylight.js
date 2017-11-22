@@ -22,7 +22,7 @@ $(function() {
         latitude: parseFloat($latitude.val()),
         longitude: parseFloat($longitude.val()),
         year: parseInt($year.val()),
-        month: parseInt($month.val()) + 1,
+        month: parseInt($month.val()),
         day: parseInt($day.val())
       }),
       contentType: 'application/json'
@@ -50,7 +50,7 @@ $(function() {
       $latitude.val(pos.coords.latitude);
       $longitude.val(pos.coords.longitude);
       $year.val(m.year());
-      $month.val(m.month());
+      $month.val(m.month() + 1);
       $day.val(m.date());
       $calculate.click();
     });
